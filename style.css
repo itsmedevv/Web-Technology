@@ -1,0 +1,217 @@
+/* =========================================================
+   1. COLOURS & IMAGES  (change everything from here)
+   ========================================================= */
+:root {
+  --midnight: #0b1d3a;   /* dark blue: nav, footer, overlays */
+  --blue:     #2f6bff;   /* main accent: buttons, links      */
+  --sun:      #ffd23f;   /* yellow highlight: price tags     */
+  --bg:       #f3f6fb;   /* light page background            */
+  --text:     #1d2a3f;
+  --muted:    #5f6f87;
+  --error:    #c62828;
+
+  /* Photos come from the internet (Unsplash).
+     To use your own photo: put it in an "images" folder and write
+     url("images/yourphoto.jpg") instead. */
+  --img-hero:  url("https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=70");
+  --img-about: url("https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=70");
+  --img-code:  url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=70");
+  --img-web:   url("https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=70");
+  --img-expo:  url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=70");
+  --img-reg:   url("https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=70");
+}
+
+/* =========================================================
+   2. BASIC RESET & TEXT
+   ========================================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+/* Section headings */
+.title { font-size: 2.2rem; color: var(--midnight); margin-bottom: 16px; }
+.center { text-align: center; margin-bottom: 40px; }
+
+/* Every section gets the same spacing */
+section { padding: 80px 20px; }
+
+/* =========================================================
+   3. BUTTONS
+   ========================================================= */
+.btn {
+  display: inline-block;
+  background: var(--blue); color: #fff;
+  border: 2px solid var(--blue);
+  padding: 12px 28px; border-radius: 50px;       /* 50px = pill shape */
+  font: 500 1rem 'Poppins', sans-serif;
+  text-decoration: none; cursor: pointer;
+  margin-right: 10px;
+}
+.btn:hover { background: #1f55e0; }
+.btn-outline { background: transparent; border-color: #fff; }
+.btn-outline:hover { background: #fff; color: var(--midnight); }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+/* =========================================================
+   4. NAVIGATION BAR
+   ========================================================= */
+header { background: var(--midnight); position: sticky; top: 0; z-index: 10; }
+nav {
+  max-width: 1100px; margin: auto; padding: 14px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px;
+}
+nav h1 { color: #fff; font-size: 1.5rem; }
+nav h1 span { color: var(--sun); }
+nav ul { list-style: none; display: flex; gap: 24px; align-items: center; }
+nav a { color: #fff; text-decoration: none; font-size: .95rem; }
+nav a:hover { color: var(--sun); }
+.nav-cta { background: var(--blue); padding: 8px 20px; border-radius: 50px; }
+.nav-cta:hover { background: #1f55e0; color: #fff; }
+
+/* =========================================================
+   5. HERO (photo + dark overlay so white text is readable)
+   ========================================================= */
+.hero {
+  min-height: 85vh;
+  display: flex; align-items: center;
+  padding: 80px 20px 150px;
+  color: #fff;
+  /* 1st layer: dark gradient on top, 2nd layer: the photo, 3rd: fallback colour */
+  background:
+    linear-gradient(90deg, rgba(11,29,58,.92) 0%, rgba(11,29,58,.6) 60%, rgba(11,29,58,.3) 100%),
+    var(--img-hero) center / cover no-repeat,
+    var(--midnight);
+}
+.hero-inner { max-width: 1100px; width: 100%; margin: auto; }
+.hero-inner > * { max-width: 620px; }          /* keeps text lines short */
+.chip {
+  display: inline-block; background: var(--sun); color: var(--midnight);
+  font-weight: 600; font-size: .85rem; padding: 4px 16px; border-radius: 50px;
+}
+.hero h2 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.15; margin: 18px 0; }
+.hero-text { font-weight: 300; font-size: 1.1rem; margin-bottom: 28px; }
+
+/* =========================================================
+   6. STATS BAR (negative margin pulls it up over the hero)
+   ========================================================= */
+.stats-bar {
+  position: relative;
+  max-width: 800px; margin: -75px auto 0;
+  background: #fff; border-radius: 16px; padding: 26px;
+  box-shadow: 0 12px 40px rgba(11,29,58,.18);
+  display: grid; grid-template-columns: repeat(3, 1fr); text-align: center;
+}
+.stats-bar h3 { font-size: 2.4rem; color: var(--blue); }
+.stats-bar p { color: var(--muted); }
+
+/* =========================================================
+   7. ABOUT (two columns)
+   ========================================================= */
+.about-grid {
+  max-width: 1100px; margin: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+}
+.about p { margin-bottom: 14px; color: var(--muted); }
+.about-img {
+  min-height: 340px; border-radius: 16px;
+  background: var(--img-about) center / cover, var(--blue);
+}
+
+/* =========================================================
+   8. EVENT CARDS (auto-fit = fewer columns on small screens)
+   ========================================================= */
+.events { background: #fff; }
+.event-container {
+  max-width: 1100px; margin: auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 28px;
+}
+.event-card {
+  position: relative; background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(11,29,58,.12);
+  display: flex; flex-direction: column;
+}
+.event-card:hover { transform: translateY(-5px); transition: transform .2s; }
+
+.card-img { height: 190px; background-size: cover; background-position: center; background-color: var(--blue); }
+.img-code { background-image: var(--img-code); }
+.img-web  { background-image: var(--img-web); }
+.img-expo { background-image: var(--img-expo); }
+
+.price {                                         /* yellow badge on the photo */
+  position: absolute; top: 14px; right: 14px;
+  background: var(--sun); color: var(--midnight);
+  font-weight: 600; font-size: .85rem; padding: 2px 14px; border-radius: 50px;
+}
+.card-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.card-body h3 { font-size: 1.35rem; color: var(--midnight); }
+.meta { color: var(--blue); font-weight: 500; font-size: .9rem; margin-bottom: 6px; }
+.card-body p:not(.meta) { flex: 1; color: var(--muted); }
+.reg-btn {
+  margin-top: 16px; background: var(--midnight); color: #fff; border: none;
+  padding: 10px; border-radius: 50px; font: 500 .95rem 'Poppins', sans-serif; cursor: pointer;
+}
+.reg-btn:hover { background: var(--blue); }
+
+/* =========================================================
+   9. REGISTER (photo panel + form side by side)
+   ========================================================= */
+.register-wrap {
+  max-width: 1000px; margin: auto;
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(11,29,58,.18);
+}
+.register-info {
+  padding: 44px 34px; color: #fff;
+  background: linear-gradient(rgba(11,29,58,.82), rgba(11,29,58,.82)), var(--img-reg) center / cover, var(--midnight);
+}
+.register-info h2 { font-size: 2rem; margin-bottom: 20px; }
+.register-info ul { list-style: none; }
+.register-info li { padding: 10px 0 10px 28px; position: relative; }
+.register-info li::before { content: "✓"; position: absolute; left: 0; color: var(--sun); font-weight: 700; }
+
+.register-form-side { background: #fff; padding: 36px; }
+label { display: block; font-weight: 500; margin-top: 12px; }
+input, select {
+  width: 100%; padding: 10px 12px; margin-top: 4px;
+  border: 1px solid #c4cde0; border-radius: 8px; font: inherit;
+}
+input:focus, select:focus { border-color: var(--blue); outline: none; }
+input.invalid, select.invalid { border-color: var(--error); }   /* class added by script.js */
+.error { display: block; min-height: 1.2em; color: var(--error); font-size: .85rem; }
+form .btn { width: 100%; margin-top: 14px; }
+
+.confirmation { text-align: center; padding: 20px 0; }
+.confirmation h3 { color: var(--blue); font-size: 1.6rem; margin-bottom: 12px; }
+.confirmation p { margin-bottom: 8px; }
+.confirmation .btn { margin-top: 14px; }
+
+/* =========================================================
+   10. FOOTER
+   ========================================================= */
+footer { background: var(--midnight); color: #fff; text-align: center; padding: 44px 20px; }
+footer h3 { margin-bottom: 10px; }
+footer p { font-weight: 300; margin-bottom: 12px; }
+.copy { font-size: .85rem; opacity: .7; }
+
+/* =========================================================
+   11. MOBILE: stack the two-column layouts into one column
+   ========================================================= */
+@media (max-width: 800px) {
+  .about-grid, .register-wrap { grid-template-columns: 1fr; }
+  nav { justify-content: center; }
+  .hero { padding-bottom: 130px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .event-card:hover { transform: none; }
+}
